@@ -12,7 +12,7 @@ class CartPage {
     }
 
     get deleteSelectedLabel() {
-        return $("#usun span");
+        return $('//*[@id="koszyk"]/tbody/tr[3]/td[5]/a/img');
     }
 
     get emptyCartMessage() {

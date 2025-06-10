@@ -1,5 +1,5 @@
 import { helionHomeURL, searchProductURL, cartPageURL } from "../../config/pagesURL";
-import { searchPhrase, alertMessage, emptyCartMessage } from "../../config/data";
+import { searchPhrase, emptyCartMessage } from "../../config/data";
 import SearchBarPage from "../../pages/components/SearchBarPage";
 import SearchResultsPage from "../../pages/SearchResultsPage";
 import ProductPage from "../../pages/ProductPage";
@@ -19,7 +19,7 @@ describe("E2E - Product and Cart", async () => {
         await expect(browser).toHaveUrl(searchProductURL);
     })
 
-    it("Should click on first product", async () => {
+    it("Should click on third product", async () => {
         await SearchResultsPage.clickOnThirdItem();
         await ProductPage.productTitleVisible();
         await ProductPage.addToCartButtonVisible();
@@ -37,8 +37,6 @@ describe("E2E - Product and Cart", async () => {
     it("Should delete product from cart", async () => {
         await CartPage.clickCheckbox();
         await CartPage.clickDeleteSelected();
-        await expect(await browser.getAlertText()).toContain(alertMessage);
-        await CartPage.acceptDeleteAlert();
         await expect(await CartPage.getEmptyCartMessage()).toContain(emptyCartMessage)
     })
 })

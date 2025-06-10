@@ -1,3 +1,5 @@
+const allure = require('allure-commandline');
+
 export const config: WebdriverIO.Config = {
     //
     // ====================
@@ -65,7 +67,9 @@ export const config: WebdriverIO.Config = {
     capabilities: [{
         browserName: 'chrome',
         "goog:chromeOptions": {
-            args: ["--headless"]
+            args: [
+                //"--headless"
+            ]
         }
     }],
 
@@ -116,7 +120,7 @@ export const config: WebdriverIO.Config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    // services: [],
+    services: ['devtools'],
     //
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -139,7 +143,14 @@ export const config: WebdriverIO.Config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    reporters: [
+        'spec',
+        ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: true,
+        }],
+    ],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -218,7 +229,7 @@ export const config: WebdriverIO.Config = {
     /**
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
-    beforeTest: function (test, context) {
+    beforeTest: function () {
         browser.maximizeWindow();
     },
     /**
@@ -287,8 +298,27 @@ export const config: WebdriverIO.Config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    onComplete: function() {
+        const reportError = new Error('Could not generate Allure report');
+        const generation = allure(['generate', 'allure-results', '--clean']);
+        
+        return new Promise((resolve, reject) => {
+            const generationTimeout = setTimeout(() => {
+            reject(reportError);
+            }, 15000); 
+
+            generation.on('exit', (exitCode: number | null) => {
+                clearTimeout(generationTimeout);
+
+                if (exitCode !== 0) {
+                    return reject(reportError);
+                }
+
+                console.log('Allure report successfully generated');
+                return resolve(undefined);
+            });
+        });
+    },
     /**
     * Gets executed when a refresh happens.
     * @param {string} oldSessionId session ID of the old session

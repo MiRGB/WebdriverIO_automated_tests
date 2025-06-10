@@ -4,7 +4,7 @@ class SearchBarPage {
     }
 
     get searchButton() {
-        return $('button[type="button"]');
+        return $('//*[@id="szukanie"]/fieldset/a/button');
     }
 
     get searchPopup() {
