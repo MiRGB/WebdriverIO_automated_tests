@@ -1,13 +1,74 @@
-This repository contains files for automated tests using WebdriverIO. The included test scripts are designed to automate the process of verifying the functionality of the web application "helion.pl".
+# 🚀 Automated Tests for **helion.pl** using WebdriverIO
 
-To run the tests:
+This repository contains **automated test scripts** written with WebdriverIO to verify the functionality of the web application [helion.pl](https://helion.pl).
 
-Install Node.js (if it's not already installed).
+---
 
-Open a terminal and navigate to the project folder.
+## 📊 Allure Test Report (automatically generated)
 
-Run the following command to install dependencies:
+After running the tests, an **Allure report** is generated automatically.  
+You can always check the latest report here:  
+🌐 [https://mirgb.github.io/WebdriverIO_automated_tests/](https://mirgb.github.io/WebdriverIO_automated_tests/)
+
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+
+- Ensure you have **[Node.js](https://nodejs.org/)** installed on your machine.
+
+### Installation
+
+Open your terminal, navigate to the project root, and run:
+
 `npm install`
 
-Then launch WebdriverIO with:
-`npx wdio run wdio.conf.js`
+### Running Tests
+
+Run the complete end-to-end test suite:
+
+`npm run e2e`
+
+Run tests in debug mode:
+
+`npm run debug`
+
+---
+
+## 📋 Project Overview
+
+- **TypeScript** based WebdriverIO framework.
+- Supports running tests on **Chrome** browser.
+- Integrated with **Allure Reporter** for detailed test reports.
+- Test reports are generated **automatically** after test execution.
+
+---
+
+## ⚠️ Important Notice
+
+> ❗ **Disclaimer:**  
+> This project is created **solely for educational purposes** and personal learning.  
+> It is **NOT** affiliated with, sponsored by, or officially related to **helion.pl**.
+
+---
+
+## 🗂️ Project Structure & Scripts
+
+- `wdio.conf.ts` — Main configuration file for WebdriverIO.
+- `test/specs/` — Directory containing test specification files.
+- `package.json` — Defines project scripts and dependencies.
+
+### Available scripts:
+
+`"scripts": {`  
+`  "e2e": "wdio wdio.conf.ts --suite e2e",`  
+`  "debug": "wdio wdio.conf.ts --suite debug"`  
+`}`
+
+---
+
+## 🙋‍♂️ Author & License
+
+- Author: MiRGB  
+- License: ISC
