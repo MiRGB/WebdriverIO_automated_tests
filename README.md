@@ -68,7 +68,7 @@ Run tests in debug mode:
 
 ---
 
-## 🙋‍♂️ Author & License
+## 📄 Copyright Notice
 
-- Author: MiRGB  
-- License: ISC
+Copyright © MiRGB, 2025.  
+All rights reserved.
