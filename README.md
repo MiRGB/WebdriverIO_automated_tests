@@ -8,7 +8,7 @@ This repository contains **automated test scripts** written with WebdriverIO to 
 
 After running the tests, an **Allure report** is generated automatically.  
 You can always check the latest report here:  
-🌐 [https://mirgb.github.io/WebdriverIO_automated_tests/](https://mirgb.github.io/WebdriverIO_automated_tests/)
+🌐 [https://mirgb.github.io/webdriverio-automated-tests/](https://mirgb.github.io/webdriverio-automated-tests/)
 
 ---
 
@@ -68,7 +68,7 @@ Run tests in debug mode:
 
 ---
 
-## 📄 Copyright Notice
+## 📄 License
 
-Copyright © MiRGB, 2025.  
-All rights reserved.
+⚠️ This project is not open source. All rights reserved.  
+For review purposes only. See the [LICENSE](./LICENSE) file for full terms.
